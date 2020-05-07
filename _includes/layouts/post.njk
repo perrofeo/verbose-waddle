@@ -6,4 +6,11 @@ templateClass: tmpl-post
 
 {{ content | safe }}
 
+{% for tag in post.data.tags %}
+      {%- if collections.tagList.indexOf(tag) != -1 -%}
+      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
+      {%- endif -%}
+    {% endfor %}
+
 <p><a href="{{ '/' | url }}">← Home</a></p>
